@@ -21,12 +21,15 @@ INSERT INTO Paciente(IdUsuario,Nome,CPF)
 VALUES(1,'Rebeca Carolina','99765327477');
 
 INSERT INTO PresencaConsulta(IdPaciente,Situacao)
-VALUES(2,0)
+VALUES(1,0)
 
-INSERT INTO Consulta(IdPresencaConsulta,IdMedico,Prontuario)
-VALUES(2,1,'A paciente Rebeca Carolina, atendida pelo médico Gustavo Magalhães no dia 15-08-2023, desenvolveu Conjutivite e iniciou tratamento ocular.')
+INSERT INTO Consulta(IdPresencaConsulta,IdClinica,IdPaciente,IdMedico,Prontuario,DataConsulta,Horario)
+VALUES(1,1,1,1,'A paciente Rebeca Carolina, atendida pelo médico Gustavo Magalhães, desenvolveu Conjutivite e iniciou tratamento ocular.','15-08-2023','10:35:30')
 
-INSERT INTO FeedBacks(IdConsulta,Descricao,Exibe)
-VALUES(1,'Excelente consulta, espero melhorar breve!',1)
+INSERT INTO FeedBacks(IdConsulta,IdPaciente,Descricao,Exibe)
+VALUES(1,1,'Excelente consulta, espero melhorar breve!',1)
 
 SELECT * FROM Clinica
+SELECT * FROM PresencaConsulta
+SELECT * FROM Consulta
+SELECT * FROM FeedBacks

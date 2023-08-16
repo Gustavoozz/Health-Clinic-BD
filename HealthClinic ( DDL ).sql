@@ -63,19 +63,24 @@ CREATE TABLE Consulta
 (
 IdConsulta INT PRIMARY KEY IDENTITY,
 IdPresencaConsulta INT FOREIGN KEY REFERENCES PresencaConsulta(IdPresencaConsulta),
+IdClinica INT FOREIGN KEY REFERENCES Clinica(IdClinica),
+IdPaciente INT FOREIGN KEY REFERENCES Paciente(IdPaciente),
 IdMedico INT FOREIGN KEY REFERENCES Medico(IdMedico),
-Prontuario VARCHAR(500) NOT NULL UNIQUE
+Prontuario VARCHAR(500) NOT NULL UNIQUE,
+DataConsulta DATE NOT NULL,
+Horario TIME NOT NULL
 );
 
 CREATE TABLE FeedBacks
 (
 IdFeedBacks INT PRIMARY KEY IDENTITY,
+IdPaciente INT FOREIGN KEY REFERENCES Paciente(IdPaciente),
 IdConsulta INT FOREIGN KEY REFERENCES Consulta(IdConsulta),
 Descricao VARCHAR(500) NOT NULL,
 Exibe BIT DEFAULT(0)
 );
 
-select * from Consulta
+select * from Especialidade
 select * from TiposDeUsuario
 select * from Usuario
 select * from Paciente
@@ -85,3 +90,13 @@ select * from PresencaConsulta
 
 select * from FeedBacks
 select * from Especialidade
+
+DROP TABLE Especialidade
+DROP TABLE Clinica
+DROP TABLE TiposDeUsuario
+DROP TABLE Usuario
+DROP TABLE Paciente
+DROP TABLE Medico
+DROP TABLE Consulta
+DROP TABLE FeedBacks
+Drop table PresencaConsulta
